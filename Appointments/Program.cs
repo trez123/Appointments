@@ -1,7 +1,17 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using Appointments.Models;
+using Microsoft.AspNetCore.Identity;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<DoctorsDbContext>();
+
+builder.Services.AddDbContext<DoctorsDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DoctorConnection")));
 
 var app = builder.Build();
 
@@ -22,7 +32,9 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Doctors}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();
 
