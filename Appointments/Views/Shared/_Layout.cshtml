@@ -8,40 +8,68 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Appointments.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Appointments</a>
+        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-light bg-white w-100">
+            <div class="d-flex justify-content-between w-100 px-5">
+                <a class="navbar-brand fs-2" asp-area="" asp-controller="Home" asp-action="Index"><img src="/images/image.png" style="width: 5rem;"><span class="tab"></span>MARTI MEDICAL</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="d-sm-inline-flex justify-content-between align-items-center">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" style="margin-right: 1rem;" asp-area="" asp-controller="Home" asp-action="Index">Home <i class="fa-solid fa-chevron-down"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" style="margin-right: 1rem;" asp-area="" asp-controller="Home" asp-action="Privacy">Features <i class="fa-solid fa-chevron-down"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" style="margin-right: 1rem;" asp-area="" asp-controller="Home" asp-action="Privacy">Departments <i class="fa-solid fa-chevron-down"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark pr-4" style="margin-right: 1rem;" asp-area="" asp-controller="Home" asp-action="Privacy">Our Doctors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark pr-4" style="margin-right: 1rem;" asp-area="" asp-controller="Home" asp-action="Privacy">Template</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark pr-4" style="margin-right: 1rem;" asp-area="" asp-controller="Home" asp-action="Privacy">New</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark pr-4" style="margin-right: 1rem;" asp-area="" asp-controller="Home" asp-action="Privacy"><i class="fa-solid fa-search"></i></a>
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div>
+        <main>
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Appointments - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer text-muted" style="background-color: #568AF8">
+       <div class="container">
+         <div class="row">
+            <ul class="nav col">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Contact</a></li>
+            </ul>
+        <div class="col d-flex align-items-center justify-content-end" style="font-size: 1.5rem;">
+            <i class="fa-brands fa-linkedin-in px-2 text-light"></i>
+            <i class="fa-brands fa-instagram px-2 text-light"></i>
+            <i class="fa-brands fa-facebook px-2 text-light"></i>
+            <i class="fa-brands fa-twitter px-2 text-light"></i>
         </div>
+         </div>
+       </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
