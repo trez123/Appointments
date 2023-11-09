@@ -37,3 +37,8 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.input-form{
+  background-color: #EFEFEF;
+  border: none;
+  padding: 1rem;
+}
