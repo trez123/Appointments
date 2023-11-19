@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Appointments.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Appointments.Controllers
 {
@@ -19,6 +20,7 @@ namespace Appointments.Controllers
         }
 
         // GET: Doctors
+        [Authorize]
         public async Task<IActionResult> Index()
         {
               return _context.DoctorsAppointments != null ? 
@@ -27,6 +29,7 @@ namespace Appointments.Controllers
         }
 
         // GET: Doctors/Details/5
+         [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.DoctorsAppointments == null)
@@ -45,6 +48,7 @@ namespace Appointments.Controllers
         }
 
         // GET: Doctors/Create
+        [Authorize]
         public IActionResult Upsert(int id = 0)
         {
             if (id == 0)
@@ -64,8 +68,9 @@ namespace Appointments.Controllers
             {
                 if (doctorsAppointment.Id == 0)
                 {
-                    doctorsAppointment.DOB = DateTime.Now;
                     _context.Add(doctorsAppointment);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Success","Home");
                 }
                 else
                     _context.Update(doctorsAppointment);
@@ -78,6 +83,7 @@ namespace Appointments.Controllers
       
 
         // GET: Doctors/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.DoctorsAppointments == null)
@@ -98,6 +104,7 @@ namespace Appointments.Controllers
         // POST: Doctors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.DoctorsAppointments == null)

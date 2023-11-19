@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Appointments.Models.DoctorsAppointment
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -27,24 +29,36 @@
           <div class="vr"></div>
         <div class="p-4" style="width: 60%;">
             <p class="fs-4" style="font-weight: 500;">REQUEST APPOINTMENT</p>
-            <div class="d-flex">
-                        <input class="input-form mx-1 my-2 w-50" placeholder="Name*"/>
-                        <input class="input-form mx-1 my-2 w-50" placeholder="Phone*"/>
+            <form asp-controller="Doctors" asp-action="Upsert">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="d-flex">
+                        <div>
+                            <input class="input-form mx-1 my-2" style="width: 90%;" asp-for="FirstName" placeholder="First Name*"/>
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <input class="input-form mx-1 my-2" style="width: 90%;"  asp-for="LastName" placeholder="Last Name*"/>
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
                     </div>
                     <div class="d-flex">
-                        <input class="input-form mx-1 my-2 w-50" placeholder="Email*" type="email"/>
-                        <input class="input-form mx-1 my-2 w-50" style="color: rgba(0, 0, 0, 0.5)" placeholder="Date*" type="datetime-local"/>
+                        <div>
+                            <input class="input-form mx-1 my-2" style="width: 90%;" asp-for="EmailAddress" placeholder="Email Address*" type="email"/>
+                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <input class="input-form mx-1 my-2" style="width: 90%;"  asp-for="PhoneNumber" placeholder="Phone Number*"/>
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
                     </div>
-                    <div class="d-flex">
-                        <select  class="input-form mx-1 my-2 p-0 w-50" style="color: rgba(0, 0, 0, 0.5)">
-                            <option>Departments</option>
-                        </select>
-                        <select  class="input-form mx-1 my-2 p-0 w-50" style="color: rgba(0, 0, 0, 0.5)">
-                            <option>Doctors</option>
-                        </select>
+                    <div>
+                        <input class="input-form mx-1 my-2" style="width: 95%;" asp-for="DOB"  style="color: rgba(0, 0, 0, 0.5)" placeholder="Date of Birth*" type="datetime-local"/>
+                        <span asp-validation-for="DOB" class="text-danger"></span>
                     </div>
-                    <textarea class="input-form mx-1 my-2" style="height: 10rem; width: 98%;" placeholder="Message *"></textarea>   
-                    <a class="btn btn-primary px-5 py-3 mx-1 my-2 border-" style="background-color: #568AF8;">SUBMIT NOW</a>     
-            </div>
+                    <input class="btn btn-primary px-5 py-3 mx-1 my-2 border-" type="submit" value="SUBMIT NOW" style="background-color: #568AF8;" />    
+            </form>
         </div>
 </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
