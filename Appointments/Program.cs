@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<DoctorsDbContext>();
+    .AddEntityFrameworkStores<DoctorsDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddDbContext<DoctorsDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DoctorConnection")));

@@ -38,6 +38,8 @@ namespace Appointments.Utilities
                 };
 
                 IdentityResult createDoctor = await userManager.CreateAsync(doctor, "Doctor876$");
+                var confirmationToken = await userManager.GenerateEmailConfirmationTokenAsync(doctor);
+                await userManager.ConfirmEmailAsync(doctor, confirmationToken);
                 if(createDoctor.Succeeded)
                 {
                     await userManager.AddToRoleAsync(doctor, "Doctor");
@@ -57,6 +59,8 @@ namespace Appointments.Utilities
                 };
 
                 IdentityResult createEmployee = await userManager.CreateAsync(employee1, "Employee123$");
+                var confirmationToken = await userManager.GenerateEmailConfirmationTokenAsync(employee1);
+                await userManager.ConfirmEmailAsync(employee1, confirmationToken);
                 if(createEmployee.Succeeded)
                 {
                     await userManager.AddToRoleAsync(employee1, "Employee");
